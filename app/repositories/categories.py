@@ -11,7 +11,7 @@ class CategoryRepository:
     def get_all_category(self):
         return self.db.scalars(select(CategoryOrm)).all()
 
-    def get_by_id_category(self, category_id: int):
+    def get_by_id_category(self, category_id: str):
         return self.db.get(CategoryOrm, category_id)
 
     def create_category(self, name: str):

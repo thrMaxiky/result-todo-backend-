@@ -23,7 +23,7 @@ class CategoryService:
 
     def update_category(
         self,
-        category_id: int,
+        category_id: str,
         category_update: CategoryUpdate,
     ):
         category_for_update = self.category_repository.get_by_id_category(category_id)
@@ -36,7 +36,7 @@ class CategoryService:
         self.db.refresh(category_for_update)
         return ReadCategory.model_validate(category_for_update)
 
-    def delete_category(self, category_id: int) -> None:
+    def delete_category(self, category_id: str) -> None:
         category_for_delete = self.category_repository.get_by_id_category(category_id)
         if category_for_delete is None:
             raise ValueError(f"Category {category_id} not found")

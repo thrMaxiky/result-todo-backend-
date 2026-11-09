@@ -24,15 +24,18 @@ def create_category(
 
 @router.patch("/categories/{category_id}")
 def update_category(
-    category_id: int,
+    category_id: str,
     payload: CategoryUpdate,
     category_service: CategoryService = Depends(get_category_service),
 ):
-    return category_service.update_category(category_id, payload)
+    return category_service.update_category(
+        category_id, payload
+    )  # ← вернул category_id
 
 
 @router.delete("/categories/{category_id}")
 def delete_category(
-    category_id: int, category_service: CategoryService = Depends(get_category_service)
+    category_id: str,
+    category_service: CategoryService = Depends(get_category_service),
 ):
     return category_service.delete_category(category_id)
